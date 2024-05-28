@@ -3,7 +3,6 @@ import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import { FcGoogle } from "react-icons/fc";
 import { useCookies } from "react-cookie";
 import Image from "next/image";
 

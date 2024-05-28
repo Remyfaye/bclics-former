@@ -67,7 +67,7 @@ const page = () => {
   }
 
   if (loading) {
-    return <div className="pt-32 mx-auto text-center">loading...</div>;
+    return <div className="pt-32 mx-auto text-center text-xl">Loading...</div>;
   }
   return (
     <div className=" pr-4 lg:px-20 ">
@@ -80,18 +80,19 @@ const page = () => {
         </div>
 
         <div className="lg:mr-1 max-w-5xl mx-auto">
-          <div className="grid  lg:grid-cols-3 grid-cols-2 gap-5 max-w-4xl  mx-auto">
-            {products?.map((post) => (
-              <Post
-                allProducts
-                key={post.id}
-                title={post.name}
-                image={post.image}
-                price={post.price}
-                id={post._id}
-                category={post.category}
-              />
-            ))}
+          <div className="grid lg:ml-[-5rem] lg:grid-cols-3 grid-cols-2 gap-5 max-w-4xl  mx-auto">
+            {products.length > 0 &&
+              products?.map((post) => (
+                <Post
+                  allProducts
+                  key={post.id}
+                  title={post.name}
+                  image={post.image}
+                  price={post.price}
+                  id={post._id}
+                  category={post.category}
+                />
+              ))}
           </div>
 
           <div className="grid lg:grid-cols-3 grid-cols-2 gap-5 m-0 lg:max-w-3xl lg:mr-20 lg:mx-auto">
