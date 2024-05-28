@@ -6,7 +6,6 @@ import "firebase/compat/storage";
 import { useEffect, useState } from "react";
 import firebase from "firebase/compat/app";
 import toast from "react-hot-toast";
-import Header from "@/components/Header";
 import { adminItems } from "@/constants";
 import Link from "next/link";
 import UploadImage from "../../components/layout/UploadImage";
