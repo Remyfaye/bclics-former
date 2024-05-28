@@ -10,9 +10,12 @@ export default function RecomHeader({ title, color, seeAll }) {
       className={`${color} p-3 rounded-t-lg text-xl text-white  flex justify-between`}
     >
       <h2 className="upp uppercase lg:mx-auto">{title}</h2>
-      <Link href={`/allProducts/${title}`} className="text-sm">
+      <h3
+        onClick={() => router.push(`/allProducts/${title}`)}
+        className="text-sm"
+      >
         see all {">"}
-      </Link>
+      </h3>
     </div>
   );
 }

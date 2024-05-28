@@ -89,7 +89,7 @@ export default function Navbar() {
               // alt="logo"
               onClick={() => router.push("/")}
             >
-              b <span className="text-black ml-[-10px]">clics</span>
+              b <span className="text-black ml-[-8px]">clics</span>
             </h1>
           </div>
 
