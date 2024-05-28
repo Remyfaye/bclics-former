@@ -80,7 +80,7 @@ const page = () => {
         </div>
 
         <div className="lg:mr-1 max-w-5xl mx-auto">
-          <div className="grid lg:ml-[-5rem] lg:grid-cols-3 grid-cols-2 gap-5 max-w-4xl  mx-auto">
+          <div className="grid lg:ml-[-15rem] lg:grid-cols-3 grid-cols-2 gap-5 max-w-4xl  mx-auto">
             {products.length > 0 &&
               products?.map((post) => (
                 <Post
