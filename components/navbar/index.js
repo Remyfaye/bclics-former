@@ -83,14 +83,14 @@ export default function Navbar() {
             <span>
               <Elementthree suppressHydrationWarning />
             </span>
-            <h1
+            <a
               // src="/jumia.png"
               className="h-[40px] text-primary mt-1 cursor-pointer  text-3xl"
               // alt="logo"
-              onClick={() => router.push("/")}
+              href={"/"}
             >
               b <span className="text-black ml-[-8px]">clics</span>
-            </h1>
+            </a>
           </div>
 
           <div className="hidden lg:flex">

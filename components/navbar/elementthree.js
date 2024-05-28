@@ -75,7 +75,7 @@ export default function Elementthree() {
               : "dropdown-content  h-[101vh] mt-[-2.3rem] p-2 shadow bg-base-100 rounded-box w-52"
           }
         >
-          <div className="items-start w-[15rem] bg-white p-2 mx-2 h-[100%] ">
+          <div className="items-start mt-0 w-[15rem] bg-white p-2 mx-2 h-[100%] ">
             <div className=" md:inline ">
               {user !== null ? (
                 <div>
@@ -87,13 +87,13 @@ export default function Elementthree() {
                   </h3>
                 </div>
               ) : (
-                <Link
+                <a
                   href="/login"
                   // onClick={signIn}
                   className=" text-primary border px-4  py-2 rounded-lg hover:text-white hover:bg-primary border-primary "
                 >
                   LOGIN / SIGN UP
-                </Link>
+                </a>
               )}
             </div>
 
@@ -108,7 +108,7 @@ export default function Elementthree() {
 
             <div
               onClick={() => setClick(false)}
-              className="border-y-2 py-3 w-[80%] "
+              className="border-y-2 py-3 w-[80%] mt-10"
             >
               <SidebarMenuItem
                 link="services"
