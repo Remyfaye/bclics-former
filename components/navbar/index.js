@@ -85,11 +85,11 @@ export default function Navbar() {
             </span>
             <h1
               // src="/jumia.png"
-              className="h-[40px] mt-1 cursor-pointer  text-3xl"
+              className="h-[40px] text-primary mt-1 cursor-pointer  text-3xl"
               // alt="logo"
               onClick={() => router.push("/")}
             >
-              bclics
+              b <span className="text-black ml-[-10px]">clics</span>
             </h1>
           </div>
 
