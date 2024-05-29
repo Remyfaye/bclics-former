@@ -8,7 +8,7 @@ export default function Middle() {
         <Carousel
           showArrows={true}
           autoPlay={true}
-          interval={1000}
+          interval={2000}
           infiniteLoop={true}
           showThumbs={false}
         >
