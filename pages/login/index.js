@@ -62,7 +62,7 @@ const Login = () => {
       if (response.ok) {
         const data = await response.json();
         console.log(data);
-        setMessage(`login successfull: welcome ${data.user.email}`);
+        setMessage(data.message);
         setCookie("userId", data.user._id);
         setHasCreatedUser(true);
         router.push("/");
@@ -90,6 +90,7 @@ const Login = () => {
       <h1 className="mt-20 text-primary text-center text-3xl my-5 font-bold">
         Login
       </h1>
+      <p>{message}</p>
 
       <>
         {/* <form> */}

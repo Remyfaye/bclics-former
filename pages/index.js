@@ -54,6 +54,7 @@ export default function Home() {
       <CategoryDisplay header={"services"} color={"bg-blue-400"} />
       <CategoryDisplay header={"food"} color={"bg-blue-400"} />
       <CategoryDisplay header={"health and beauty"} color={"bg-red-400"} />
+      <CategoryDisplay header={"property"} color={"bg-red-400"} />
       {/* </Toaster> */}
     </main>
   );
