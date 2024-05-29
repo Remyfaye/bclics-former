@@ -20,13 +20,15 @@ import CategoryIcon from "@mui/icons-material/Category";
 import MenuIcon from "@mui/icons-material/Menu";
 import SidebarMenuItem from "../header/SidebarMenuItem";
 import { useSession, signIn, signOut } from "next-auth/react";
-import { Cookies } from "react-cookie";
+import { Cookies, useCookies } from "react-cookie";
 import Link from "next/link";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 
 export default function Elementthree() {
+  const [cookies, setCookie, removeCookie] = useCookies();
+
   const router = useRouter();
   const { data: session } = useSession();
   const cookie = new Cookies();
@@ -58,6 +60,14 @@ export default function Elementthree() {
 
     fetchUser();
   }, [user]);
+
+  const handleLogOutUser = async (e) => {
+    // setIsCreatingUser(true);
+
+    // signOut("google", { callbackUrl: "/" });
+    removeCookie("userId");
+    // toast("you have been logged out");
+  };
   return (
     <>
       <div className="dropdown dropdown-bottom cursor-pointer md:hidden">
@@ -149,13 +159,13 @@ export default function Elementthree() {
 
             <div className="mt-10 w-[90%] text-center md:inline ">
               {user !== null && (
-                <h3
+                <a
                   href="/login"
-                  onClick={signOut}
-                  className=" text-primary border px-4 py-2 rounded-lg hover:text-white hover:bg-primary border-primary "
+                  onClick={handleLogOutUser}
+                  className=" text-primary border px-4 py-2 rounded-lg w-full hover:text-white hover:bg-primary border-primary "
                 >
-                  <h3>LOGOUT </h3>
-                </h3>
+                  LOGOUT{" "}
+                </a>
               )}
             </div>
           </div>
