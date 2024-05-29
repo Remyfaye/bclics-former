@@ -24,7 +24,7 @@ const page = () => {
       try {
         if (router.isReady) {
           setId(router.query.id);
-          const response = await fetch(`/api/products?category=${id}`);
+          const response = await fetch(`/api/product/products?category=${id}`);
           const data = await response.json();
           console.log(data);
           setProducts(data);

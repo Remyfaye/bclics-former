@@ -20,14 +20,14 @@ export default function Post({ allProducts, title, image, price, id }) {
           }
           alt={title}
         />
-        <Link href={`/product/${id}`} className="hover:underline">
+        <a href={`/product/${id}`} className="hover:underline">
           <span className="capitalize font-[500] justify-center text-center line-clamp-1">
             {title}
           </span>
           <h2 className="text-sm text-center mt-2 text-cyan-400">
             &#8358; {price}
           </h2>
-        </Link>
+        </a>
 
         {allProducts && (
           <button className="bg-primary text-sm  lg:mt-4 rounded-[3px] lg:mb-1 flex justify-center mt-5 text-white mb-5 px-4 py-2 w-2xl mx-auto">

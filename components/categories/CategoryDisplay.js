@@ -11,14 +11,30 @@ export default function CategoryDisplay({ header, productPage }) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      // const products = await fetchProductsbyCategory("gaming");
-      //   console.log(products);
-    };
-    fetchProducts();
-    const products = menuEmpty.filter((item) => item.category === header);
-    setProducts(products);
+    // const products = menuEmpty.filter((item) => item.category === header);
+    // setProducts(products);
     // console.log(products);
+
+    const fetchProduct = async () => {
+      try {
+        const response = await fetch(
+          `/api/product/products?category=${header}`
+        );
+        const data = await response.json();
+        // console.log(data);
+        setProducts(data);
+        // setLoading(false);
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          return;
+        }
+      } catch (err) {
+        console.error("Error fetching Product:", err);
+      }
+    };
+
+    fetchProduct();
   }, [products]);
 
   return (
@@ -36,16 +52,17 @@ export default function CategoryDisplay({ header, productPage }) {
               : "carousel lg:pr-3 lg:grid grid-cols-6 carousel-center w-full shadow-lg"
           }
         >
-          {products?.map((post) => (
-            <Post
-              key={post.id}
-              title={post.name}
-              image={post.image}
-              price={post.price}
-              id={post._id}
-              category={post.category}
-            />
-          ))}
+          {products.length > 0 &&
+            products?.map((post) => (
+              <Post
+                key={post.id}
+                title={post.name}
+                image={post.image}
+                price={post.price}
+                id={post._id}
+                category={post.category}
+              />
+            ))}
         </div>
       </div>
     </div>

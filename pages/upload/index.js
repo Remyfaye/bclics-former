@@ -32,7 +32,7 @@ const Upload = () => {
   const [sizeItem, setSizeItem] = useState("");
   const [disabled, setDisabled] = useState(false);
   const [isChosingImage, setIsChosingImage] = useState(false);
-  const [viewItems, setViewItems] = useState(false);
+  const [featured, setFeatured] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [sizes, setSizes] = useState([]);
   const [id, setId] = useState("");
@@ -82,6 +82,7 @@ const Upload = () => {
     category: category,
     contact: contact,
     vendor: vendor,
+    featured: featured,
   };
 
   const createProduct = async () => {
@@ -124,7 +125,6 @@ const Upload = () => {
     setPrice("");
     setDescription("");
     setLocation("");
-    setViewItems(true);
   };
 
   const deleteItem = async () => {

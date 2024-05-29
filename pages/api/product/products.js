@@ -1,4 +1,4 @@
-import clientPromise from "../../lib/mongodb";
+import clientPromise from "@/lib/mongodb";
 
 export default async function handler(req, res) {
   if (req.method !== "GET") {
@@ -19,6 +19,7 @@ export default async function handler(req, res) {
     const products = await db
       .collection("products")
       .find({ category })
+      .sort({ createdAt: -1 })
       .toArray();
     // console.log(products);
     res.status(200).json(products);

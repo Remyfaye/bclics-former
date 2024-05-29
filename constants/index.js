@@ -2,7 +2,7 @@ export const menuEmpty = [
   {
     image: "/health/cream.webp",
     _id: "d030",
-    name: "shirt blue",
+    name: "cream blue",
     category: "health and beauty",
     vendor: "lensatic compass",
     phone: "070789765456",
@@ -64,7 +64,7 @@ export const menuEmpty = [
   {
     image: "/electronics/laptop.jpg",
     _id: "d015",
-    name: "printer hp s9 plus 64 GB blue",
+    name: "laptop hp s9 plus 64 GB blue",
     category: "electronics",
     vendor: "lensatic compass",
     phone: "070789765456",
@@ -75,7 +75,7 @@ export const menuEmpty = [
   {
     image: "/electronics/fan.jpg",
     _id: "d017",
-    name: "samsung galaxy s9 plus 64 GB blue",
+    name: "fan galaxy s9 plus 64 GB blue",
     category: "electronics",
     vendor: "lensatic compass",
     phone: "070789765456",
@@ -219,7 +219,7 @@ export const menuEmpty = [
   {
     image: "/fashion/shoe.webp",
     _id: "d026",
-    name: "samsung galaxy s9 plus 64 GB blue",
+    name: "shoe galaxy s9 plus 64 GB blue",
     category: "fashion",
     vendor: "lensatic compass",
     phone: "070789765456",
@@ -229,7 +229,7 @@ export const menuEmpty = [
   {
     image: "/fashion/watch.webp",
     _id: "d027",
-    name: "samsung galaxy s9 plus 64 GB blue",
+    name: "watch galaxy s9 plus 64 GB blue",
     category: "fashion",
     vendor: "lensatic compass",
     phone: "070789765456",
@@ -239,7 +239,7 @@ export const menuEmpty = [
   {
     image: "/fashion/shoe2.webp",
     _id: "d028",
-    name: "samsung galaxy s9 plus 64 GB blue",
+    name: "shoe galaxy s9 plus 64 GB blue",
     category: "fashion",
     vendor: "lensatic compass",
     phone: "070789765456",
@@ -259,7 +259,7 @@ export const menuEmpty = [
   {
     image: "/fashion/glasses.webp",
     _id: "d0291",
-    name: "palms galaxy s9 plus 64 GB blue",
+    name: "cartier glasses s9 plus 64 GB blue",
     category: "fashion",
     vendor: "lensatic compass",
     phone: "070789765456",
@@ -269,7 +269,7 @@ export const menuEmpty = [
   {
     image: "/fashion/dress.webp",
     _id: "d0292",
-    name: "shirt blue",
+    name: "black dress",
     category: "fashion",
     vendor: "lensatic compass",
     phone: "070789765456",
@@ -280,7 +280,7 @@ export const menuEmpty = [
   {
     image: "/health/cream.webp",
     _id: "d030",
-    name: "shirt blue",
+    name: "lotion blue",
     category: "health and beauty",
     vendor: "lensatic compass",
     phone: "070789765456",
@@ -370,7 +370,7 @@ export const menuEmpty = [
   {
     image: "/health/serum.webp",
     _id: "d034w",
-    name: "conjestion pills blue",
+    name: "vitaminc c serum",
     category: "health and beauty",
     vendor: "lensatic compass",
     phone: "070789765456",
@@ -431,7 +431,7 @@ export const menuEmpty = [
   {
     image: "/services/maid.webp",
     _id: "d044",
-    name: "conjestion pills blue",
+    name: "cleaners",
     category: "services",
     vendor: "lensatic compass",
     phone: "070789765456",
@@ -452,7 +452,7 @@ export const menuEmpty = [
     image: "/services/milky.webp",
     _id: "d0544",
     name: "milky",
-    category: "services",
+    category: "food",
     vendor: "lensatic compass",
     phone: "070789765456",
     desc: "A rich blend of selected malt whiskies giving it an extra smooth and full body test for customers like you. Premium extra whisky. Original Blend.",
@@ -561,6 +561,9 @@ export const categories = [
   },
   {
     name: "services",
+  },
+  {
+    name: "food",
   },
   {
     name: "fashion",

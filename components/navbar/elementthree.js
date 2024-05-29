@@ -57,7 +57,7 @@ export default function Elementthree() {
     };
 
     fetchUser();
-  }, []);
+  }, [user]);
   return (
     <>
       <div className="dropdown dropdown-bottom cursor-pointer md:hidden">
@@ -69,19 +69,15 @@ export default function Elementthree() {
         </label>
         <div
           tabIndex={0}
-          className={
-            click
-              ? "dropdown-content hidden h-[101vh] mt-[-2.3rem] p-2 shadow bg-base-100 rounded-box w-52"
-              : "dropdown-content  h-[101vh] mt-[-2.3rem] p-2 shadow bg-base-100 rounded-box w-52"
-          }
+          className="dropdown-content  w-[15rem] h-screen  p-2 shadow bg-base-100 rounded-box "
         >
-          <div className="items-start mt-0 w-[15rem] bg-white p-2 mx-2 h-[100%] ">
-            <div className=" md:inline ">
+          <div className="items-start mt-0  bg-white p-2   ">
+            <div className=" md:inline my-5">
               {user !== null ? (
                 <div>
                   <h3
                     className="my-auto mb-3 mt-3 cursor-pointer "
-                    onClick={() => router.push("/profile")}
+                    // onClick={() => router.push("/profile")}
                   >
                     HI, {user?.name || user?.email}
                   </h3>
@@ -100,9 +96,9 @@ export default function Elementthree() {
             {user && (
               <div className="mt-5  text-red-500 text-xl my-2">
                 <CableIcon />
-                <Link href="/upload" className="ml-2">
+                <a href="/upload" className="ml-2">
                   upload a product
-                </Link>
+                </a>
               </div>
             )}
 

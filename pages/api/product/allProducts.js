@@ -6,12 +6,7 @@ export default async function handler(req, res) {
     return res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 
-  const { category } = req.query;
-  console.log(category);
-
-  if (!category) {
-    return res.status(400).json({ message: "Category is required" });
-  }
+  //   const { category } = req.query;
 
   try {
     const client = await clientPromise;
@@ -19,9 +14,17 @@ export default async function handler(req, res) {
 
     const products = await db
       .collection("products")
-      .find({ category })
+      .find()
+      .sort({ createdAt: -1 })
       .toArray();
-    console.log(products);
+    //   .exec();
+    //   .aggregate([{ $sample: { size: 3 } }])
+
+    // const count = await Product.countDocuments().exec();
+    // const random = Math.floor(Math.random() * count);
+    // const products = Product.aggregate([{ $sample: { size: 3 } }]);
+
+    // console.log(products);
     res.status(200).json(products);
   } catch (error) {
     console.error(error);

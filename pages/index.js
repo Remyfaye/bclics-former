@@ -45,13 +45,14 @@ export default function Home() {
       <div className="lg:grid grid-cols-2 gap-10 mt-5 mb-10">
         <OurServices />
         <SliderMainPage />
-        <FeaturedProducts />
-        <Recommendedforu />
+        {/* <FeaturedProducts />
+        <Recommendedforu /> */}
       </div>
 
       <CategoryDisplay header={"electronics"} color={"bg-green-400"} />
       <CategoryDisplay header={"fashion"} color={"bg-red-300"} />
       <CategoryDisplay header={"services"} color={"bg-blue-400"} />
+      <CategoryDisplay header={"food"} color={"bg-blue-400"} />
       <CategoryDisplay header={"health and beauty"} color={"bg-red-400"} />
       {/* </Toaster> */}
     </main>

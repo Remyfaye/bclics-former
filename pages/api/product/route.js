@@ -9,13 +9,16 @@ export default async function handler(req, res) {
       case "POST":
         const data = req.body;
         console.log(data);
-        // Ensure name and email are provided
+
         if (!data) {
           res.status(400).json({ message: "Name and email are required" });
           return;
         }
 
-        // Add user to the database
+        const timestamp = new Date();
+        data.createdAt = timestamp;
+        data.updatedAt = timestamp;
+
         const result = await db.collection("products").insertOne(data);
 
         res.status(201).json({ message: "product added", result });
