@@ -135,7 +135,7 @@ const Register = () => {
             register
           </button>
           {message}
-          <p className="text-center mt-2 text-gray-500">
+          {/* <p className="text-center mt-2 text-gray-500">
             or login with provider
           </p>
           <button
@@ -143,9 +143,9 @@ const Register = () => {
             className="border py-3 rounded-2xl font-bold mt-2 flex items-center gap-2 justify-center"
           >
             <Image src="/google.jpg" alt="img" width={32} height={32} />
-            {/* <FcGoogle className="text-2xl" /> */}
+            <FcGoogle className="text-2xl" />
             Login with google
-          </button>
+          </button> */}
           <div className="text-center mt-3 text-gray-500">
             Existing account?{" "}
             <Link className="underline" href="/auth/login">

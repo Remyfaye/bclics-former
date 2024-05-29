@@ -6,7 +6,7 @@ import { menuEmpty } from "@/constants";
 import Post from "../recommended/post";
 import RecomHeader from "../recommended/header";
 
-export default function CategoryDisplay({ header, productPage }) {
+export default function CategoryDisplay({ color, header, productPage }) {
   const [posts, setPosts] = useState();
   const [products, setProducts] = useState([]);
 
@@ -39,7 +39,7 @@ export default function CategoryDisplay({ header, productPage }) {
 
   return (
     <div className="pt-5 mt-5 rounded-xl">
-      {!productPage && <RecomHeader title={header} color="bg-primary" />}
+      {!productPage && <RecomHeader title={header} color={color} />}
 
       <div className="bg-white ">
         {productPage && (

@@ -134,7 +134,7 @@ export default function Elementthree() {
                 text="Health & Beauty"
                 Icon={MedicationLiquidIcon}
               />
-
+              <SidebarMenuItem link="food" text="Food" Icon={MicrowaveIcon} />
               <SidebarMenuItem
                 link="sports"
                 text="Sporting Goods"

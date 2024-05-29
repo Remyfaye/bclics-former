@@ -569,7 +569,7 @@ export const categories = [
     name: "fashion",
   },
   {
-    name: "beauty",
+    name: "health and beauty",
   },
   {
     name: "property",

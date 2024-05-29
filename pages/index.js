@@ -49,12 +49,12 @@ export default function Home() {
         <Recommendedforu /> */}
       </div>
 
-      <CategoryDisplay header={"electronics"} color={"bg-green-400"} />
-      <CategoryDisplay header={"fashion"} color={"bg-red-300"} />
-      <CategoryDisplay header={"services"} color={"bg-blue-400"} />
-      <CategoryDisplay header={"food"} color={"bg-blue-400"} />
-      <CategoryDisplay header={"health and beauty"} color={"bg-red-400"} />
-      <CategoryDisplay header={"property"} color={"bg-red-400"} />
+      <CategoryDisplay header={"electronics"} color={"bg-primary"} />
+      <CategoryDisplay header={"fashion"} color={"bg-green-600"} />
+      <CategoryDisplay header={"services"} color={"bg-blue-600"} />
+      <CategoryDisplay header={"food"} color={"bg-primary"} />
+      <CategoryDisplay header={"health and beauty"} color={"bg-green-600"} />
+      <CategoryDisplay header={"property"} color={"bg-blue-600"} />
       {/* </Toaster> */}
     </main>
   );

@@ -69,10 +69,10 @@ const Login = () => {
         setEmail("");
       } else {
         const error = await response.json();
-        setMessage(`Error: ${error.message} please try again`);
+        setMessage(`Error: ${error.message} Please try again`);
         setEmail("");
         setPassword("");
-        setHasCreatedUser(true);
+        setIsCreatingUser(false);
       }
     } catch (error) {
       console.error("Error loggin in:", error);
@@ -130,7 +130,7 @@ const Login = () => {
         {/* <Signin /> */}
         <p className="text-center mt-3 text-gray-500">
           Existing account?{" "}
-          <Link className="underline" href="/auth/register">
+          <Link className="underline" href="/register">
             Register here
           </Link>
         </p>
