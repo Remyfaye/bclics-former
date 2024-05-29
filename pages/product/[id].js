@@ -83,14 +83,14 @@ const page = () => {
 
               <p className="mb-3">
                 <span
-                  className=" font-extralight cursor-pointer text-blue-200 text-sm mb-5"
+                  className=" font-extralight cursor-pointer text-blue-300 mb-5"
                   href=""
                 >
-                  {product.category}
+                  {product.location}
                 </span>
               </p>
 
-              <button className="bg-primary  text-white  px-4 py-2 ">
+              <button className="bg-primary  text-white lg:px-4 px-3 py-2 ">
                 Save This Item
               </button>
             </div>
