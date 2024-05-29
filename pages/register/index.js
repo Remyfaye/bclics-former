@@ -91,7 +91,7 @@ const Register = () => {
             you can now
             <Link
               className="underline text-lg text-blue-700 ml-1"
-              href="/auth/login"
+              href="/login"
             >
               Login
             </Link>{" "}
@@ -148,7 +148,7 @@ const Register = () => {
           </button> */}
           <div className="text-center mt-3 text-gray-500">
             Existing account?{" "}
-            <Link className="underline" href="/auth/login">
+            <Link className="underline" href="/login">
               Login here
             </Link>
           </div>

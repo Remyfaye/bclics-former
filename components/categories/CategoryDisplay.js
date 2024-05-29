@@ -5,6 +5,7 @@ import { NGnaira } from "@/lib/help";
 import { menuEmpty } from "@/constants";
 import Post from "../recommended/post";
 import RecomHeader from "../recommended/header";
+import PlaceHolder from "../layout/PlaceHolder";
 
 export default function CategoryDisplay({ color, header, productPage }) {
   const [posts, setPosts] = useState();
@@ -52,17 +53,18 @@ export default function CategoryDisplay({ color, header, productPage }) {
               : "carousel lg:pr-3 lg:grid grid-cols-6 carousel-center w-full shadow-lg"
           }
         >
-          {products.length > 0 &&
-            products?.map((post) => (
-              <Post
-                key={post.id}
-                title={post.name}
-                image={post.image}
-                price={post.price}
-                id={post._id}
-                category={post.category}
-              />
-            ))}
+          {products.length > 0
+            ? products?.map((post) => (
+                <Post
+                  key={post.id}
+                  title={post.name}
+                  image={post.image}
+                  price={post.price}
+                  id={post._id}
+                  category={post.category}
+                />
+              ))
+            : menuEmpty.map((item) => <PlaceHolder />)}
         </div>
       </div>
     </div>

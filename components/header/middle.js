@@ -8,7 +8,7 @@ export default function Middle() {
         <Carousel
           showArrows={true}
           autoPlay={true}
-          interval={2000}
+          interval={1000}
           infiniteLoop={true}
           showThumbs={false}
         >
@@ -16,10 +16,13 @@ export default function Middle() {
             <img src="/shoes.png" className="h-[100%] w-full " />
           </div>
           <div>
-            <img src="/shoes.png" />
+            <img src="/add1.png" />
           </div>
           <div>
             <img src="headphones.png" />
+          </div>
+          <div>
+            <img src="/add2.png" />
           </div>
           <div>
             <img src="/woman.png" />
