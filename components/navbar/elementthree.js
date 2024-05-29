@@ -69,9 +69,9 @@ export default function Elementthree() {
         </label>
         <div
           tabIndex={0}
-          className="dropdown-content  w-[15rem] h-screen  p-2 shadow bg-base-100 rounded-box "
+          className="dropdown-content  w-[15rem] h-screen  p-2 shadow bg-white rounded-box "
         >
-          <div className="items-start mt-0  bg-white p-2   ">
+          <div className="items-start mt-0   p-2   ">
             <div className=" md:inline my-5">
               {user !== null ? (
                 <div>
