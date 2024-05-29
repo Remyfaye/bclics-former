@@ -36,7 +36,7 @@ const Upload = () => {
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [sizes, setSizes] = useState([]);
   const [id, setId] = useState("");
-  const [user, setUser] = useState(null);
+  const [message, setMessage] = useState("");
 
   // useEffect(() => {
   //   if (!vendor) return;
@@ -104,6 +104,7 @@ const Upload = () => {
           if (response.ok) {
             const data = await response.json();
             console.log(data);
+            setMessage(data.message);
             router.push(`/allProducts/${category}`);
           } else {
             const error = await response.json();
@@ -257,6 +258,7 @@ const Upload = () => {
           >
             create
           </button>
+          {message}
         </div>
       </div>
     </section>

@@ -52,9 +52,9 @@ export default function Home() {
       <CategoryDisplay header={"electronics"} color={"bg-primary"} />
       <CategoryDisplay header={"fashion"} color={"bg-primary"} />
       <CategoryDisplay header={"services"} color={"bg-primary"} />
-      <CategoryDisplay header={"food"} color={"bg-green-800"} />
+      <CategoryDisplay header={"property"} color={"bg-green-800"} />
       <CategoryDisplay header={"health and beauty"} color={"bg-green-600"} />
-      <CategoryDisplay header={"property"} color={"bg-blue-600"} />
+      <CategoryDisplay header={"food"} color={"bg-blue-600"} />
       {/* </Toaster> */}
     </main>
   );
