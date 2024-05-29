@@ -54,7 +54,7 @@ export default function Elementthree() {
         // console.log(data);
       } catch (err) {
         console.error("Error fetching user:", err);
-        setError("Error fetching user");
+        // setError("Error fetching user");
       }
     };
 

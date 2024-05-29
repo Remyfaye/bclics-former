@@ -17,14 +17,7 @@ export default async function handler(req, res) {
       .find()
       .sort({ createdAt: -1 })
       .toArray();
-    //   .exec();
-    //   .aggregate([{ $sample: { size: 3 } }])
 
-    // const count = await Product.countDocuments().exec();
-    // const random = Math.floor(Math.random() * count);
-    // const products = Product.aggregate([{ $sample: { size: 3 } }]);
-
-    // console.log(products);
     res.status(200).json(products);
   } catch (error) {
     console.error(error);
