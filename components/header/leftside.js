@@ -69,9 +69,9 @@ export default function Leftside({ allProducts }) {
         {user && (
           <div className="mt-5  text-red-500 text-xl my-2">
             <CableIcon />
-            <Link href="/upload" className="ml-2">
+            <a href="/upload" className="ml-2">
               upload a product
-            </Link>
+            </a>
           </div>
         )}
 
