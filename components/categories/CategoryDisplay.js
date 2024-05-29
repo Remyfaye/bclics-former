@@ -39,7 +39,7 @@ export default function CategoryDisplay({ color, header, productPage }) {
 
   return (
     <div className="pt-5 mt-5 rounded-xl">
-      {!productPage && <RecomHeader title={header} color={color} />}
+      {!productPage && <RecomHeader title={header} color="bg-primary" />}
 
       <div className="bg-white ">
         {productPage && (
