@@ -69,7 +69,10 @@ const Login = () => {
         setEmail("");
       } else {
         const error = await response.json();
-        setMessage(`Error: ${error.message}`);
+        setMessage(`Error: ${error.message} please try again`);
+        setEmail("");
+        setPassword("");
+        setHasCreatedUser(true);
       }
     } catch (error) {
       console.error("Error loggin in:", error);
