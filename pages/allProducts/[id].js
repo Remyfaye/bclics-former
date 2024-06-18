@@ -52,23 +52,23 @@ const page = () => {
     fetchProduct();
   }, [products, router.isReady, router.query.id, id]);
 
-  if (!loading && products?.length < 1) {
-    return (
-      <div className="pt-32 mx-auto text-center">
-        <h3 className="mb-6 text-xl">No products yet</h3>
-        <Link
-          className="bg-primary border shadow-xl text-white px-10 py-3 mt-10 rounded-[7px] "
-          href="/upload"
-        >
-          Upload a product
-        </Link>
-      </div>
-    );
-  }
+  // if (!loading && products?.length < 1) {
+  //   return (
+  //     <div className="pt-32 mx-auto text-center">
+  //       <h3 className="mb-6 text-xl">No products yet</h3>
+  //       <Link
+  //         className="bg-primary border shadow-xl text-white px-10 py-3 mt-10 rounded-[7px] "
+  //         href="/upload"
+  //       >
+  //         Upload a product
+  //       </Link>
+  //     </div>
+  //   );
+  // }
 
-  if (loading) {
-    return <div className="pt-32 mx-auto text-center text-xl">Loading...</div>;
-  }
+  // if (loading) {
+  //   return <div className="pt-32 mx-auto text-center text-xl">Loading...</div>;
+  // }
   return (
     <div className=" pr-4 lg:px-20 ">
       <h1 className="mb-[4rem]  border-b-2 w-[50%] mx-auto border-red-300  text-center">
@@ -79,8 +79,11 @@ const page = () => {
           <Leftside allProducts />
         </div>
 
-        <div className="lg:mr-20 max-w-5xl mx-auto">
-          <div className="grid lg:ml-[-15rem] lg:grid-cols-3 grid-cols-2 gap-5 max-w-4xl  mx-auto">
+        <div className="lg:mr-[3rem] lg:w-[45%]  max-w-5xl mx-auto">
+          <h1 className="lg:hidden mb-[1rem] lg:ml-[-15rem]  text-3xl capitalize">
+            {id}:
+          </h1>
+          <div className="grid  w-full  lg:ml-[-15rem] lg:grid-cols-3 grid-cols-2 gap-3 max-w-4xl  mx-auto">
             {products.length > 0 &&
               products?.map((post) => (
                 <Post
@@ -91,6 +94,7 @@ const page = () => {
                   price={post.price}
                   id={post._id}
                   category={post.category}
+                  location={post.location}
                 />
               ))}
           </div>

@@ -6,13 +6,21 @@ import { useRouter } from "next/router";
 import CategoryDisplay from "@/components/categories/CategoryDisplay";
 import Saved from "@/components/saved/Saved";
 import Leftside from "@/components/header/leftside";
+import { Cookies } from "react-cookie";
 
 const page = () => {
+  const cookie = new Cookies();
+
+  const userId = cookie.get("userId");
+  const [user, setUser] = useState(null);
+  const [vendor, setVendor] = useState(null);
+
   const router = useRouter();
   const [product, setProduct] = useState({});
   const [id, setId] = useState(null);
   const [header, setHeader] = useState("");
   const [loading, setLoading] = useState(false);
+  const [owner, setOwner] = useState(false);
 
   useEffect(() => {
     // console.log(router.isReady);
@@ -27,7 +35,6 @@ const page = () => {
           console.log(product);
           setProduct(data);
           setHeader(data?.category);
-          setLoading(false);
 
           if (!response.ok) {
             const errorData = await response.json();
@@ -44,7 +51,49 @@ const page = () => {
       }
     };
 
+    const fetchUser = async () => {
+      try {
+        const response = await fetch(`/api/users/${userId}`);
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          return;
+        }
+
+        const data = await response.json();
+        setUser(data);
+        // console.log(data);
+      } catch (err) {
+        console.error("Error fetching user:", err);
+        // setError("Error fetching user");
+      }
+    };
+
+    const fetchVendor = async () => {
+      try {
+        const response = await fetch(`/api/users/${product?.vendor}`);
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          return;
+        }
+
+        const data = await response.json();
+        setVendor(data);
+        // console.log(data);
+      } catch (err) {
+        console.error("Error fetching user:", err);
+        // setError("Error fetching user");
+      }
+    };
+
+    fetchUser();
+    fetchVendor();
     fetchProduct();
+
+    if (user?._id === product.vendor) {
+      setOwner(true);
+    }
   }, [product, router.isReady, router.query.id, id]);
   return (
     <div className="lg:flex gap-5">
@@ -57,13 +106,19 @@ const page = () => {
           {/* left */}
           <div className=" flex mt-5 gap-3  bg-white capitalize lg:w-[57%] rounded-lg">
             <img
-              className=" w-[12rem] lg:w-[20rem]  object-cover max-h-[17rem] rounded-lg"
+              className=" w-full   object-cover h-[20rem]  lg:h-[25rem] rounded-lg"
               src={product?.image}
               alt="img"
             />
+          </div>
+
+          {/* product details */}
+          <div className="bg-white mt-5 p-3 rounded-lg lg:w-[40%]">
+            <h2 className="border-b mb-5 pb-2 font-bold "> Product Details</h2>
             <div className="p-3">
-              <div className="border-b mb-5 pb-2">
-                <p className="font-semibold ">{product?.name}</p>
+              <div className=" mb-1 pb-2">
+                <p className="font-semibold ">Name: {product?.name}</p>
+                <p className=" my-3">Vendor: {vendor?.name}</p>
 
                 {/* <p className="mt-2 text-[13px]">
                   vendor:{" "}
@@ -72,7 +127,7 @@ const page = () => {
                   </a>
                 </p> */}
               </div>
-              <p className="font-[500">&#8358;{product?.price}</p>
+              <p className="font-[500">Price: &#8358;{product?.price}</p>
 
               <p className="my-2 text-gray-500">
                 contact:{" "}
@@ -86,20 +141,21 @@ const page = () => {
                   className=" font-extralight cursor-pointer text-blue-300 mb-5"
                   href=""
                 >
-                  {product.location}
+                  location: {product.location}
                 </span>
               </p>
 
-              <button className="bg-primary  text-white lg:px-4 px-3 py-2 ">
+              <button className="bg-primary rounded-[7px] text-white lg:px-4 px-3 py-2">
                 Save This Item
               </button>
-            </div>
-          </div>
 
-          {/* product details */}
-          <div className="bg-white mt-5 p-3 rounded-lg lg:w-[40%]">
-            <h2 className="border-b mb-5 pb-2"> product details</h2>
-            <p>{product?.description}</p>
+              {owner && (
+                <button className="cursor-pointer border ml-3 text-center my-5 w-[40%] rounded-[7px] text-black lg:px-4 px-3 py-2">
+                  <a href={`/upload/edit/${product._id}`}>edit</a>
+                </button>
+              )}
+            </div>
+            <p className="border-t pt-3">{product?.description}</p>
           </div>
         </div>
 

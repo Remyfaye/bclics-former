@@ -50,7 +50,7 @@ export default function Elementthree() {
 
         const data = await response.json();
         setUser(data);
-        console.log(data);
+        // console.log(data);
         // console.log(data);
       } catch (err) {
         console.error("Error fetching user:", err);
@@ -85,12 +85,13 @@ export default function Elementthree() {
             <div className=" md:inline my-5">
               {user !== null ? (
                 <div>
-                  <h3
+                  <a
+                    href="/profile"
                     className="my-auto mb-3 mt-3 cursor-pointer "
                     // onClick={() => router.push("/profile")}
                   >
                     HI, {user?.name || user?.email}
-                  </h3>
+                  </a>
                 </div>
               ) : (
                 <a

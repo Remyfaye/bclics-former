@@ -6,6 +6,7 @@ export const menuEmpty = [
     category: "health and beauty",
     vendor: "lensatic compass",
     phone: "070789765456",
+    location: "hilltop",
     desc: "A rich blend of selected malt whiskies giving it an extra smooth and full body test for customers like you. Premium extra whisky. Original Blend.",
     price: 180000,
   },
@@ -16,6 +17,7 @@ export const menuEmpty = [
     category: "health and beauty",
     vendor: "lensatic compass",
     phone: "070789765456",
+    location: "odim",
     desc: "A rich blend of selected malt whiskies giving it an extra smooth and full body test for customers like you. Premium extra whisky. Original Blend.",
     price: 180000,
   },
@@ -25,6 +27,7 @@ export const menuEmpty = [
     name: "high quality shoe",
     category: "fashion",
     vendor: "lensatic compass",
+    location: "behind flat",
     phone: "070789765456",
     desc: "A rich blend of selected malt whiskies giving it an extra smooth and full body test for customers like you. Premium extra whisky. Original Blend.",
     price: 180000,
@@ -35,6 +38,7 @@ export const menuEmpty = [
     name: "samsung galaxy s9 plus 64 GB blue",
     category: "electronics",
     vendor: "lensatic compass",
+    location: "odim",
     phone: "070789765456",
     desc: "A rich blend of selected malt whiskies giving it an extra smooth and full body test for customers like you. Premium extra whisky. Original Blend.",
     price: 180000,
@@ -56,6 +60,7 @@ export const menuEmpty = [
     _id: "d013",
     name: "printer hp s9 plus 64 GB blue",
     category: "electronics",
+    location: "odim",
     vendor: "lensatic compass",
     phone: "070789765456",
     desc: "A rich blend of selected malt whiskies giving it an extra smooth and full body test for customers like you. Premium extra whisky. Original Blend.",
@@ -66,6 +71,7 @@ export const menuEmpty = [
     _id: "d015",
     name: "laptop hp s9 plus 64 GB blue",
     category: "electronics",
+    location: "odim",
     vendor: "lensatic compass",
     phone: "070789765456",
     desc: "A rich blend of selected malt whiskies giving it an extra smooth and full body test for customers like you. Premium extra whisky. Original Blend.",
@@ -76,6 +82,7 @@ export const menuEmpty = [
     image: "/electronics/fan.jpg",
     _id: "d017",
     name: "fan galaxy s9 plus 64 GB blue",
+    location: "odim",
     category: "electronics",
     vendor: "lensatic compass",
     phone: "070789765456",
@@ -579,5 +586,28 @@ export const categories = [
   },
   {
     name: "others",
+  },
+];
+
+export const adminItems = [
+  {
+    label: "profile",
+    route: "profile",
+  },
+  {
+    label: "categories",
+    route: "categories",
+  },
+  {
+    label: "menu",
+    route: "menu",
+  },
+  {
+    label: "users",
+    route: "users",
+  },
+  {
+    label: "orders",
+    route: "orders",
   },
 ];

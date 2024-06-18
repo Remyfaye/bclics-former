@@ -12,6 +12,7 @@ import { categories } from "@/constants";
 import { useRouter } from "next/router";
 import UploadImage from "@/components/layout/UploadImage";
 import { redirect } from "next/navigation";
+import { CheckBox } from "@mui/icons-material";
 
 const Upload = () => {
   const router = useRouter();
@@ -23,7 +24,7 @@ const Upload = () => {
 
   const [image, setImage] = useState("");
   const [name, setName] = useState("");
-  const [price, setPrice] = useState(null);
+  const [price, setPrice] = useState("");
   const [extraprice, setExtraPrice] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
@@ -62,17 +63,6 @@ const Upload = () => {
   //   fetchUser();
   // }, []);
 
-  const addSize = () => {
-    const sizeObject = {
-      sizeItem: sizeItem,
-      extraprice: extraprice,
-    };
-    setSizeItem("");
-    setExtraPrice("");
-    setSizes([...sizes, sizeObject]);
-    console.log(sizes);
-  };
-
   const data = {
     name: name,
     price: price,
@@ -90,7 +80,7 @@ const Upload = () => {
     console.log(data);
     const createPromise = new Promise(async (resolve, reject) => {
       if (category === "") {
-        toast("please choose a category");
+        alert("please choose a category");
       } else {
         try {
           const response = await fetch("/api/product/route", {
@@ -105,7 +95,7 @@ const Upload = () => {
             const data = await response.json();
             console.log(data);
             setMessage(data.message);
-            router.push(`/allProducts/${category}`);
+            router.push(`/product/${data.result.insertedId}`);
           } else {
             const error = await response.json();
           }
@@ -187,6 +177,15 @@ const Upload = () => {
               type="number"
               className="mt-[-13px]"
               onChange={(e) => setPrice(e.target.value)}
+            />
+          </label>
+          <label className="flex items-center gap-3">
+            contact for price
+            <input
+              value={price}
+              type="checkbox"
+              className=""
+              onClick={() => setPrice("contact for price")}
             />
           </label>
 
