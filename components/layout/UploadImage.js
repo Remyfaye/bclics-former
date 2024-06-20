@@ -25,6 +25,7 @@ const UploadImage = ({
   setImage,
   setDisabled,
   setIsChosingImage,
+  disabled,
 }) => {
   const handleFileChange = async (e) => {
     setDisabled(true);
@@ -57,11 +58,9 @@ const UploadImage = ({
   return (
     <div>
       <div
-        className={
-          menu
-            ? "w-[20rem] mx-auto lg:mx-0 flex mb-3 lg:flex flex-col items-center rounded-xl bg-gray-300  lg:w-[12rem] h-[8rem]"
-            : "mx-auto lg:mx-0 mb-10 lg:flex flex-col items-center rounded-full bg-red-200 w-[7.5rem] h-[7.5rem]"
-        }
+        className={`${
+          disabled ? "bg-gray-800 " : "bg-gray-300 "
+        } w-[20rem] mx-auto lg:mx-0 flex mb-3 lg:flex flex-col items-center rounded-xl  lg:w-[12rem] h-[8rem]`}
       >
         {image ? (
           <>
@@ -88,9 +87,7 @@ const UploadImage = ({
 
       <label
         className={
-          image
-            ? "mt-5 lg:mt-0 mx-auto flex justify-center shadow-xl border py-1 px-9 w-[2rem]  rounded-lg"
-            : "mx-auto flex mt-3 justify-center shadow-xl border py-1 px-9 w-[2rem]  rounded-lg "
+          "mt-5 lg:mt-0 mx-auto flex justify-center shadow-xl border py-1 px-9 w-[13rem]  rounded-lg"
         }
       >
         <input
@@ -99,7 +96,7 @@ const UploadImage = ({
           hidden
           onChange={handleFileChange}
         />
-        <p className="">{menu ? "Add " : "upload"} </p>
+        <p className="">{disabled ? "uploading... " : "chose image"} </p>
       </label>
     </div>
   );

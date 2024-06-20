@@ -42,7 +42,7 @@ const Login = () => {
   const [isCreatingUser, setIsCreatingUser] = useState(false);
   const [hasCreatedUser, setHasCreatedUser] = useState(false);
   const [error, setError] = useState(false);
-  const [user, setUser] = useState({});
+  const [isLoggedin, setIsLoggedin] = useState(false);
   const [isClient, setIsClient] = useState(false);
 
   const router = useRouter();
@@ -65,7 +65,6 @@ const Login = () => {
         setMessage(data.message);
         setCookie("userId", data.user._id);
         setHasCreatedUser(true);
-        router.push("/");
         setEmail("");
       } else {
         const error = await response.json();
@@ -93,49 +92,63 @@ const Login = () => {
       <h1 className="mt-20 text-primary text-center text-3xl my-5 font-bold">
         Login
       </h1>
-      <p>{message}</p>
+      {hasCreatedUser ? (
+        <div className="text-center capitalize  bg-white/70 rounded-xl p-5 border mt-4">
+          <h3 className="">login successful</h3>
+          <button
+            className="my-4 border px-4 py-2 rounded-xl shadow-md"
+            onClick={() => setError(false)}
+          >
+            <a href="/">Go to home page</a>
+          </button>
+        </div>
+      ) : (
+        <>
+          {/* <form> */}
+          <input
+            disabled={isCreatingUser}
+            type="text"
+            className="rounded-[7px]"
+            placeholder="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            disabled={isCreatingUser}
+            placeholder="password"
+            className="rounded-[7px]"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button
+            onClick={handleSubmit}
+            className="border py-3 rounded-2xl capitalize text-white bg-primary"
+            disabled={isCreatingUser}
+          >
+            login
+          </button>
+          <p>{message}</p>
 
-      <>
-        {/* <form> */}
-        <input
-          disabled={isCreatingUser}
-          type="text"
-          className="rounded-[7px]"
-          placeholder="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          disabled={isCreatingUser}
-          placeholder="password"
-          className="rounded-[7px]"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button
-          onClick={handleSubmit}
-          className="border py-3 rounded-2xl capitalize text-white bg-primary"
-          disabled={isCreatingUser}
-        >
-          login
-        </button>
-        <p className="text-center mt-2 text-gray-500">or login with provider</p>
-        {/* <button
+          <p className="text-center mt-2 text-gray-500">
+            or login with provider
+          </p>
+          {/* <button
           onClick={() => signIn("google", { callbackUrl: "/" })}
           className="border py-3 rounded-2xl font-bold mt-2 flex items-center gap-2 justify-center"
         >
           Login with google
         </button> */}
-        {/* <Signin /> */}
-        <p className="text-center mt-3 text-gray-500">
-          Existing account?{" "}
-          <Link className="underline" href="/register">
-            Register here
-          </Link>
-        </p>
-        {/* </form> */}
-      </>
+          {/* <Signin /> */}
+          <p className="text-center mt-3 text-gray-500">
+            Existing account?{" "}
+            <Link className="underline" href="/register">
+              Register here
+            </Link>
+          </p>
+          {/* </form> */}
+        </>
+      )}
     </div>
   );
 };

@@ -44,7 +44,6 @@ const page = () => {
           setLoading(true);
         }
 
-        setUser(data);
         // console.log(data);
       } catch (err) {
         console.error("Error fetching user:", err);
@@ -91,10 +90,11 @@ const page = () => {
     fetchVendor();
     fetchProduct();
 
-    if (user?._id === product.vendor) {
-      setOwner(true);
-    }
-  }, [product, router.isReady, router.query.id, id]);
+    // if (user?._id === product.vendor) {
+    //   setOwner(true);
+    //   alert("true");
+    // }
+  }, [product, vendor, user, router.isReady, router.query.id, id]);
   return (
     <div className="lg:flex gap-5">
       <div className="fixed top-[-4px] w-[16rem] h-screen mt-[4.2rem] mr-10">
@@ -115,10 +115,11 @@ const page = () => {
           {/* product details */}
           <div className="bg-white mt-5 p-3 rounded-lg lg:w-[40%]">
             <h2 className="border-b mb-5 pb-2 font-bold "> Product Details</h2>
+
             <div className="p-3">
               <div className=" mb-1 pb-2">
                 <p className="font-semibold ">Name: {product?.name}</p>
-                <p className=" my-3">Vendor: {vendor?.name}</p>
+                <p className=" my-3">Vendor: {vendor?.name || vendor?.email}</p>
 
                 {/* <p className="mt-2 text-[13px]">
                   vendor:{" "}
@@ -149,10 +150,14 @@ const page = () => {
                 Save This Item
               </button>
 
-              {owner && (
-                <button className="cursor-pointer border ml-3 text-center my-5 w-[40%] rounded-[7px] text-black lg:px-4 px-3 py-2">
-                  <a href={`/upload/edit/${product._id}`}>edit</a>
-                </button>
+              {user?._id && product.vendor && (
+                <>
+                  {user?._id === product.vendor && (
+                    <button className="cursor-pointer border ml-3 text-center my-5 w-[40%] rounded-[7px] text-black lg:px-4 px-3 py-2">
+                      <a href={`/upload/edit/${product._id}`}>edit</a>
+                    </button>
+                  )}
+                </>
               )}
             </div>
             <p className="border-t pt-3">{product?.description}</p>

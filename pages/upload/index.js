@@ -30,7 +30,6 @@ const Upload = () => {
   const [location, setLocation] = useState("");
   const [contact, setContact] = useState("");
   const [category, setCategory] = useState("");
-  const [sizeItem, setSizeItem] = useState("");
   const [disabled, setDisabled] = useState(false);
   const [isChosingImage, setIsChosingImage] = useState(false);
   const [featured, setFeatured] = useState(false);
@@ -155,6 +154,7 @@ const Upload = () => {
           setDisabled={setDisabled}
           setIsChosingImage={setIsChosingImage}
           menu
+          disabled={disabled}
         />
         {/* form */}
         <div className="border mt-5 shadow-xl mx-10 p-5 rounded-xl lg:w-[30rem] ">

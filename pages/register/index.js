@@ -9,11 +9,14 @@ import Image from "next/image";
 // import { collection, addDoc } from "firebase/firestore";
 
 const Register = () => {
+  const [cookie, setCookie] = useCookies(["userId"]);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [isCreatingUser, setIsCreatingUser] = useState(false);
   const [hasCreatedUser, setHasCreatedUser] = useState(false);
+  const [notLoggedin, setNotLoggedin] = useState(false);
   const [error, setError] = useState(false);
   const [user, setUser] = useState({});
 
@@ -32,17 +35,21 @@ const Register = () => {
 
       if (response.ok) {
         const data = await response.json();
-        setMessage(`User added successfully: ${data.userId}`);
+        setMessage(`User added successfully`);
+        setCookie("userId", data.user._id);
         setHasCreatedUser(true);
         // setName('');
         setEmail("");
       } else {
         const error = await response.json();
         setMessage(`Error: ${error.message}`);
+        setNotLoggedin(true);
+        setError(true);
       }
     } catch (error) {
       console.error("Error adding user:", error);
       setMessage("Error adding user");
+      setError(true);
     }
   };
 
@@ -86,8 +93,8 @@ const Register = () => {
       </h1>
       {hasCreatedUser && !error && (
         <div className="text-center capitalize text-sm my-3">
-          <p>registrstion complete</p>
-          <div className="mt-2">
+          <p className="mb-5">registrstion complete</p>
+          {/* <div className="mt-2">
             you can now
             <Link
               className="underline text-lg text-blue-700 ml-1"
@@ -95,18 +102,24 @@ const Register = () => {
             >
               Login
             </Link>{" "}
-          </div>
+          </div> */}
+          <a
+            className=" border px-3 py-3 rounded-lg shadow-lg bg-white/70"
+            href="/"
+          >
+            Go to home page
+          </a>
         </div>
       )}
       {error ? (
-        <div className="text-center capitalize shadow-xl p-5 border mt-4">
-          <h3 className="">an error occured. please try again</h3>
-          {/* <button
+        <div className="text-center capitalize  bg-white/70 rounded-xl p-5 border mt-4">
+          <h3 className="">an error occured.</h3>
+          <button
             className="my-4 border px-4 py-2 rounded-xl shadow-md"
             onClick={() => setError(false)}
           >
-            <Link href="/register">Try again</Link>
-          </button> */}
+            <a href="/register">click here to try again</a>
+          </button>
         </div>
       ) : (
         <>
@@ -135,17 +148,7 @@ const Register = () => {
             register
           </button>
           {message}
-          {/* <p className="text-center mt-2 text-gray-500">
-            or login with provider
-          </p>
-          <button
-            onClick={() => signIn("google", { callbackUrl: "/" })}
-            className="border py-3 rounded-2xl font-bold mt-2 flex items-center gap-2 justify-center"
-          >
-            <Image src="/google.jpg" alt="img" width={32} height={32} />
-            <FcGoogle className="text-2xl" />
-            Login with google
-          </button> */}
+
           <div className="text-center mt-3 text-gray-500">
             Existing account?{" "}
             <Link className="underline" href="/login">
