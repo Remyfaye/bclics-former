@@ -85,6 +85,7 @@ const Profile = () => {
         }
 
         console.log(response);
+        alert("update successful");
       } catch (err) {
         console.error("Error fetching user:", err);
         // setError("Error fetching user");
@@ -103,7 +104,7 @@ const Profile = () => {
 
   return (
     <>
-      <section className="mb-5   gap-10 justify-center">
+      <section className="mb-5  gap-10 justify-center">
         {/* admin items */}
         <div className="px-5 overflow-x-auto custom-scrollbar cursor-pointer flex mx-auto  gap-3  p-5 capitalize lg:mx-auto justify-center mb-5">
           {adminItems.map((item) => (
@@ -128,7 +129,7 @@ const Profile = () => {
         {chosenState === "profile" && (
           <>
             {/* user Info */}
-            <div className="lg:flex mb-5    gap-10 justify-center">
+            <div className="lg:flex mb-5 -px-3    gap-10 justify-center">
               {/* image */}
               <UploadImage
                 image={image}
@@ -138,12 +139,13 @@ const Profile = () => {
               />
 
               {/* form */}
-              <div className=" shadow-xl mx-10 p-5 rounded-xl lg:w-[30rem]">
+              <div className=" shadow-xl mt-10  p-5 rounded-xl lg:w-[30rem]">
                 <label className="flex flex-col  gap-3">
-                  Full name
+                  Username
                   <input
                     disabled={isChosingImage}
                     className="p-4"
+                    type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder={user?.name}

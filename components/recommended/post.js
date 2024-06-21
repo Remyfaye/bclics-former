@@ -16,7 +16,7 @@ export default function Post({
       <div
         className={
           allProducts
-            ? "border mt-3 rounded-xl bg-white"
+            ? "border-black/20 mt-3 rounded-xl border-[1px] "
             : " carousel-item  flex flex-col w-[120px] md:w-[200px] p-2"
         }
       >
@@ -24,7 +24,7 @@ export default function Post({
           src={image}
           className={
             allProducts
-              ? " w-[100%] rounded-t-xl mb-4 lg:h-[145px] h-[160px] md:h-[150px] object-cover"
+              ? " w-[100%] rounded-t-xl mb-4 lg:h-[145px] h-[250px]  object-cover"
               : "mx-1 mt-5 lg:w-[90%] w-[100%] h-[100px] md:h-[150px] rounded-lg object-cover"
           }
           alt={title}
@@ -33,7 +33,7 @@ export default function Post({
         <div className="px-3">
           <a href={`/product/${id}`} className="hover:underline ">
             <h2 className="text-md mb-2 mt-2 text-cyan-400">&#8358; {price}</h2>
-            <span className="capitalize font-[500] justify-center  line-clamp-1">
+            <span className="capitalize font-[500] justify-center  line-clamp-3">
               {title}
             </span>
           </a>
