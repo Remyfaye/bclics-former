@@ -32,27 +32,33 @@ const UploadImage = ({
     setIsChosingImage(true);
 
     const selectedFile = e.target.files[0];
-    if (selectedFile) {
-      const storageRef = firebase.storage().ref();
-      const fileRef = storageRef.child(selectedFile.name);
+    try {
+      if (selectedFile) {
+        const storageRef = firebase.storage().ref();
+        const fileRef = storageRef.child(selectedFile.name);
 
-      const uploadPromise = fileRef.put(selectedFile).then((snapshot) => {
-        snapshot.ref.getDownloadURL().then((downloadUrl) => {
-          console.log(downloadUrl);
-          setImage(downloadUrl);
-          setIsChosingImage(false);
+        const uploadPromise = fileRef.put(selectedFile).then((snapshot) => {
+          snapshot.ref.getDownloadURL().then((downloadUrl) => {
+            console.log(downloadUrl);
+            setImage(downloadUrl);
+            setIsChosingImage(false);
+            setDisabled(false);
+          });
         });
-      });
 
-      await toast.promise(uploadPromise, {
-        loading: "uploading...",
-        success: "upload complete",
-        error: "an error occured, please try again",
-      });
+        await toast.promise(uploadPromise, {
+          loading: "uploading...",
+          success: "upload complete",
+          error: "an error occured, please try again",
+        });
 
-      setDisabled(false);
-    } else {
-      console.log("no file chosen");
+        setDisabled(false);
+      } else {
+        console.log("no file chosen");
+      }
+    } catch (error) {
+      console.log(err);
+      throw new Error(err);
     }
   };
   return (
@@ -64,19 +70,23 @@ const UploadImage = ({
       >
         {image ? (
           <>
-            <Image
-              className={
-                menu
-                  ? " w-full max-h-[8rem] lg:h-[25rem] rounded-xl object-contain "
-                  : "w-full  rounded-full object-contain min-h-[7.5rem] max-h-[7.5rem]"
-              }
-              src={image}
-              alt="img"
-              width={300}
-              height={300}
-              // layout="fill"
-              objectFit="contain"
-            />{" "}
+            {!disabled && (
+              <>
+                <Image
+                  className={
+                    menu
+                      ? " w-full max-h-[8rem] lg:h-[25rem] rounded-xl object-contain "
+                      : "w-full  rounded-full object-contain min-h-[7.5rem] max-h-[7.5rem]"
+                  }
+                  src={image}
+                  alt="img"
+                  width={300}
+                  height={300}
+                  // layout="fill"
+                  objectFit="contain"
+                />{" "}
+              </>
+            )}
           </>
         ) : (
           <>

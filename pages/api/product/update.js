@@ -8,7 +8,9 @@ export default async function handler(req, res) {
   }
 
   const { id, data } = req.body;
-  console.log(id);
+  console.log(data);
+
+  const { _id, ...updateData } = data;
 
   if (!id || !data) {
     return res.status(400).json({ message: "Missing userId or data" });
@@ -22,7 +24,7 @@ export default async function handler(req, res) {
       .collection("products") // Assuming your collection name is 'users'
       .findOneAndUpdate(
         { _id: new ObjectId(id) }, // Find the user by ID
-        { $set: data }, // Update the user data
+        { $set: updateData }, // Update the user data
         { returnOriginal: false } // Return the updated document
       );
 

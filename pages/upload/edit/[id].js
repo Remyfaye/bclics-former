@@ -1,4 +1,3 @@
-"use client";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { redirect } from "next/navigation";
@@ -23,10 +22,13 @@ const Edit = () => {
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
 
+  const [message, setMessage] = useState("");
+
   const [isChosingImage, setIsChosingImage] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
+  const [disabled, setDisabled] = useState(false);
   const [id, setId] = useState(null);
-  const [loading, setLoading] = useState("profile");
+  const [loading, setLoading] = useState(true);
   const [product, setProduct] = useState({});
 
   useEffect(() => {
@@ -37,12 +39,18 @@ const Edit = () => {
           const data = await response.json();
           setId(router.query.id);
           setProduct(data);
+          // Set initial values
+          setName(data.name);
+          setPrice(data.price);
+          setLocation(data.location);
+          setDescription(data.description);
+          setImage(data.image);
           setLoading(false);
         } else {
           setLoading(true);
         }
       } catch (err) {
-        console.error("Error fetching user:", err);
+        console.error("Error fetching product:", err);
       }
     };
     fetchProduct();
@@ -50,12 +58,15 @@ const Edit = () => {
 
   const saveChanges = async () => {
     setIsUploading(true);
-    const updatedData = {};
 
-    if (name) updatedData.name = name;
-    if (price) updatedData.price = price;
-    if (location) updatedData.location = location;
-    if (description) updatedData.description = description;
+    const updatedData = {
+      ...product, // Keep existing data
+      ...(name && { name }), // Only add the field if it has a new value
+      ...(price && { price }),
+      ...(location && { location }),
+      ...(description && { description }),
+      ...(image && { image }),
+    };
 
     try {
       const response = await fetch("/api/product/update", {
@@ -68,12 +79,15 @@ const Edit = () => {
 
       if (!response.ok) {
         const errorData = await response.json();
+        console.log(errorData);
+        // setMessage(`error:${errorData.message}`);
         throw new Error(errorData.message);
       }
 
       router.push(`/product/${id}`);
     } catch (err) {
       console.error("Error updating product:", err);
+      alert("An error occured. Please try again");
       toast.error("An error occurred, please try again");
     } finally {
       setIsUploading(false);
@@ -92,11 +106,14 @@ const Edit = () => {
     <section className="mb-5 gap-10 justify-center">
       <div className="lg:flex pt-20 mb-5 gap-10 justify-center">
         <UploadImage
-          image={product?.image}
+          image={image}
           isUploading={isUploading}
           setImage={setImage}
-          setDisabled={setIsChosingImage}
+          setDisabled={setDisabled}
+          setIsChosingImage={setIsChosingImage}
+          disabled={disabled}
         />
+
         <div className="py-3 shadow-md mx-5 px-3 rounded-xl lg:w-[30rem]">
           <label className="mt-5 flex flex-col gap-3">
             Name
@@ -106,9 +123,10 @@ const Edit = () => {
               onChange={(e) => setName(e.target.value)}
               type="text"
               className="p-4 text-gray-400"
-              placeholder={product.name}
+              placeholder="Enter product name"
             />
           </label>
+
           <label className="mt-5 flex flex-col gap-3">
             Price
             <input
@@ -117,7 +135,7 @@ const Edit = () => {
               onChange={(e) => setPrice(e.target.value)}
               type="text"
               className="p-4 text-gray-400"
-              placeholder={product.price}
+              placeholder="Enter product price"
             />
           </label>
           <label className="mt-5 flex flex-col gap-3">
@@ -128,7 +146,7 @@ const Edit = () => {
               onChange={(e) => setLocation(e.target.value)}
               type="text"
               className="p-4 text-gray-400"
-              placeholder={product.location}
+              placeholder="Enter product location"
             />
           </label>
           <label className="mt-5 flex flex-col gap-3">
@@ -139,17 +157,19 @@ const Edit = () => {
               onChange={(e) => setDescription(e.target.value)}
               type="text"
               className="p-4 text-gray-400"
-              placeholder={product.description}
+              placeholder="Enter product description"
             />
           </label>
+          <h1>{message}</h1>
           <button
-            disabled={isChosingImage}
+            disabled={isUploading}
             onClick={saveChanges}
             className="bg-primary mt-10 py-5 px-10 w-full text-white text-xl rounded-xl"
           >
             save changes
           </button>
         </div>
+        {/* <p>{message}</p> */}
       </div>
     </section>
   );
