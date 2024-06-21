@@ -66,7 +66,7 @@ const Profile = () => {
   };
 
   const saveChanges = async (e) => {
-    console.log(e);
+    // console.log(e);
     setIsUploading(true);
 
     const uploadPromise = new Promise(async (resolve, reject) => {
